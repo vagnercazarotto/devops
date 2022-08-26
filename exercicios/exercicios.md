@@ -158,7 +158,7 @@ $ docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib
 Com o Rancher já rodando, irei adicionar a entrada de cada DNS para o IP de cada máquina.
 
 ```sh
-$ rancher.<dominio> = IP do host A
+$ rancher.54.162.113.97 = IP do host A
 ```
 
 
