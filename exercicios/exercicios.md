@@ -112,9 +112,9 @@ Para rodar nosso docker-compose, precisamos remover todos os containers que est�
 
 É preciso editar o arquivo docker-compose.yml, onde estão os nomes das imagens e colocar o seu nome de usuário.
 
-- Linha 8 = <dockerhub-user>/nginx:devops
-- Linha 18 = image: <dockerhub-user>/redis:devops
-- Linha 37 = image: <dockerhub-user>/node:devops
+- Linha 8 = vacazarottoaws/nginx:devops
+- Linha 18 = image: vacazarottoaws/redis:devops
+- Linha 37 = image: vacazarottoaws/node:devops
 
 Após alterar e colocar o nome correto das imagens, rodar o comando de up -d para subir a stack toda.
 
@@ -122,7 +122,7 @@ Após alterar e colocar o nome correto das imagens, rodar o comando de up -d par
 $ cd ..
 $ vi docker-compose.yml
 $ docker-compose -f docker-compose.yml up -d
-$ curl <ip>:80 
+$ curl 54.162.113.97:80 
 	----------------------------------
 	This page has been viewed 29 times
 	----------------------------------
