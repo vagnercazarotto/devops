@@ -53,7 +53,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   rules:
-    - host: app.rancher.<SEU_DOMINIO>
+    - host: app.rancher.vacazarotto.com
       http:
         paths:
           - backend:
