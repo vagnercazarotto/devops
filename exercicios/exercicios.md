@@ -24,8 +24,8 @@ $ ssh -i devops-ninja.pem ubuntu@<ip>  - k8s-2         - HOST C
 $ ssh -i devops-ninja.pem ubuntu@<ip>  - k8s-3         - HOST D
 
 $ sudo su
-$ curl https://releases.rancher.com/install-docker/19.03.sh | sh
-$ usermod -aG docker ubuntu
+curl https://releases.rancher.com/install-docker/19.03.sh | sh
+usermod -aG docker ubuntu
 ```
 
 
@@ -101,8 +101,12 @@ Podemos acessar então nossa aplicação nas portas 80 e 8080 no ip da nossa ins
 
 Iremos acessar a api em /redis para nos certificar que está tudo ok, e depois iremos limpar todos os containers e volumes.
 ```sh
-$ docker rm -f $(docker ps -a -q)
-$ docker volume rm $(docker volume ls)
+docker rm -f $(docker ps -a -q)
+docker volume rm $(docker volume ls)
+docker rmi -f $(docker images -aq)
+docker rm $(docker ps -a -f status=exited -q)
+docker system prune
+
 ```
 
 
@@ -188,7 +192,8 @@ Adicionar o host B e host C.
 Pegar o seu comando no seu rancher.
 ```sh
 sudo 
-docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.3 --server https://54.162.113.97 --token xh2j4r9knjmtq6smn4hjdl7q4tzmkxkcstcn7vpwk5dgk2zvnn87sn --ca-checksum 6d319174eaf89bb29aca67b0cbe050cfe61ebac9bd8c8f38373a74a6f8719579 --node-name k8s-1 --etcd --controlplane --worker
+docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.3 --server https://44.209.230.125 --token mwlkxjck772m6mhk8rhr4t5vlmwkk28nc2825cpw6bfcjl9qnh5jzk --ca-checksum 8be2735bdf5bfe1df82a5efa2aaefb22fac292c1baee3e11ffd82fd43975470a --node-name k8s-1 --etcd --controlplane --worker
+
 ```
 Será um cluster com 3 nós.
 Navegar pelo Rancher e ver os painéis e funcionalidades.
