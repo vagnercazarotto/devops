@@ -192,7 +192,7 @@ Adicionar o host B e host C.
 Pegar o seu comando no seu rancher.
 ```sh
 sudo 
-docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.3 --server https://44.209.230.125 --token mwlkxjck772m6mhk8rhr4t5vlmwkk28nc2825cpw6bfcjl9qnh5jzk --ca-checksum 8be2735bdf5bfe1df82a5efa2aaefb22fac292c1baee3e11ffd82fd43975470a --node-name k8s-1 --etcd --controlplane --worker
+docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.3 --server https://44.209.230.125 --token mwlkxjck772m6mhk8rhr4t5vlmwkk28nc2825cpw6bfcjl9qnh5jzk --ca-checksum 8be2735bdf5bfe1df82a5efa2aaefb22fac292c1baee3e11ffd82fd43975470a --node-name k8s-3 --etcd --controlplane --worker
 
 ```
 Será um cluster com 3 nós.
@@ -226,6 +226,8 @@ $ sudo apt-get install -y kubectl
 Com o kubectl instalado, pegar as credenciais de acesso no Rancher e configurar o kubectl.
 
 ```sh
+ mkdir -p ~/.kube
+
 $ vi ~/.kube/config
 $ kubectl get nodes
 ```
